@@ -90,6 +90,7 @@ header {
     align-items: center;
     color: white;
     text-align: center;
+    padding: 0 20px;
 }
 
 header h1 {
@@ -206,35 +207,71 @@ h2 {
     z-index: 1000;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE PROFESIONAL */
 @media (max-width:768px){
+
+body{
+    background-attachment: scroll;
+}
+
+section{
+    padding:100px 20px 80px;
+}
+
+header h1{
+    font-size:36px;
+    letter-spacing:2px;
+}
+
+header p{
+    font-size:16px;
+}
 
 nav a { display:none; }
 
 #menuToggle { display:block; }
 
-nav.active a {
-    display:block;
-    margin:10px 0;
+nav.active{
+    background:rgba(255,255,255,0.95);
 }
 
-header h1 { font-size:38px; }
+nav.active a{
+    display:block;
+    margin:10px 0;
+    font-size:16px;
+}
 
-.gallery {
+.button{
+    padding:16px 40px;
+    font-size:16px;
+}
+
+.gallery{
     overflow-x:auto;
     flex-wrap:nowrap;
     scroll-snap-type:x mandatory;
 }
 
-.gallery img {
+.gallery img{
     width:180px;
     height:180px;
     scroll-snap-align:center;
 }
 
-.qr { width:150px; }
+.qr { width:160px; }
+
+#musicBtn{
+    width:60px;
+    height:60px;
+    font-size:20px;
+}
+
+footer{
+    padding:60px 20px;
+}
 
 }
+
 footer {
     padding:40px;
     text-align:center;
@@ -269,8 +306,8 @@ footer {
 <a class="button" href="https://maps.app.goo.gl/Kt3pUQE3AhJ3sqKz6" target="_blank">Ver Ubicación</a>
 <p><strong>Lugar celebracion:</strong> Salón Falak – El Cercado KM 5, Monteros, Tucumán</p> 
 <a class="button" href="https://maps.app.goo.gl/CPNkUQKarg4dU7NZA" target="_blank">Ver Ubicación</a> 
+</section>
 
-</section> 
 <section id="historia"> 
 <h2>Nuestra Historia</h2> 
 <p>Escriban aquí su historia especial.</p>
@@ -282,7 +319,8 @@ footer {
 </section>
     
 <section id="galeria"> 
-<h2>Galería</h2> <div class="gallery"> 
+<h2>Galería</h2> 
+<div class="gallery"> 
 <img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
 <img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
 <img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
@@ -389,4 +427,3 @@ document.getElementById("navbar").classList.toggle("active");
 
 </body>
 </html>
-
