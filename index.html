@@ -9,10 +9,21 @@
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background-color: #f7f3ed;
-    color: #3b3b3b;
-    text-align: center;
-    scroll-behavior: smooth;
+    background-image: url("fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
 }
 
 header {
@@ -116,22 +127,24 @@ footer {
 
 <!-- 🎵 Música -->
 <audio autoplay loop>
-  <source src="musica.mp3" type="audio/mpeg">
+  <source src="musica.mp3" type="John Legend - All of Me (Official Video).mp3">
 </audio>
 
 <header>
     <!-- EDITAR NOMBRES Y FECHA -->
-    <h1>Sofía & Martín</h1>
-    <p>21 de Noviembre de 2026</p>
+    <h1>Ani & Carlos</h1>
+    <p>9 de julio de 2026</p>
     <p id="countdown"></p>
 </header>
 
 <section>
     <h2>Detalles del Evento</h2>
-    <p><strong>Ceremonia:</strong> 18:30 hs</p>
-    <p><strong>Recepción:</strong> 20:00 hs</p>
-    <p><strong>Lugar:</strong> Salón La Esperanza – Monteros, Tucumán</p>
-    <a class="button" href="https://maps.google.com" target="_blank">Ver Ubicación</a>
+    <p><strong>Ceremonia:</strong> 11:00 hs</p>
+    <p><strong>Recepción:</strong> 12:30 hs</p>
+    <p><strong>Lugar ceremonia:</strong> Iglesia Parroquial Nuetra Señora del Rosario  – Monteros, Tucumán</p>
+    <a class="button" href="https://maps.app.goo.gl/Kt3pUQE3AhJ3sqKz6" target="_blank">Ver Ubicación</a>
+    <p><strong>Lugar celebracion:</strong> Salón Falak – El Cercado KM 5, Monteros, Tucumán</p>
+    <a class="button" href="https://maps.app.goo.gl/CPNkUQKarg4dU7NZA" target="_blank">Ver Ubicación</a>
 </section>
 
 <section>
@@ -143,8 +156,8 @@ footer {
 
 <section>
     <h2>Padrinos</h2>
-    <p>Madrina: Nombre</p>
-    <p>Padrino: Nombre</p>
+    <p>Madrina: Griselda</p>
+    <p>Padrino: Eduardo</p>
 </section>
 
 <section>
@@ -175,7 +188,7 @@ footer {
 
 <section>
     <h2>Confirmar Asistencia</h2>
-    <a class="button" href="https://wa.me/549XXXXXXXXXX" target="_blank">
+    <a class="button" href="https://w.app/rsxdmi" target="_blank">
         Confirmar por WhatsApp
     </a>
 </section>
@@ -191,7 +204,7 @@ footer {
 
 <script>
 // Cuenta regresiva
-var eventDate = new Date("Nov 21, 2026 18:30:00").getTime();
+var eventDate = new Date("Jul 9, 2026 11:00:00").getTime();
 setInterval(function() {
   var now = new Date().getTime();
   var distance = eventDate - now;
@@ -225,3 +238,4 @@ function closeLightbox(){
 
 </body>
 </html>
+
