@@ -5,52 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ani & Carlos | Nuestra Boda</title>
 
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background: #f8f6f2;
+    background-image: url("fondo-acuarela-liquida-abstracta-lineas-doradas_525068-1889.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: #333;
-    overflow-x: hidden;
 }
 
-/* Partículas */
-#particles {
+body::before {
+    content: "";
     position: fixed;
     inset: 0;
+    background: rgba(255,255,255,0.88);
     z-index: -1;
 }
 
-/* Navbar */
+/* NAVBAR */
 nav {
     position: fixed;
+    top: 0;
     width: 100%;
-    padding: 18px 0;
+    padding: 15px 0;
     text-align: center;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    z-index: 999;
 }
 
 nav a {
-    margin: 0 20px;
+    margin: 0 15px;
     text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 2px;
     color: #444;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
-nav a:hover { color: #c6a75e; }
+nav a:hover {
+    color: #c6a75e;
+}
 
-/* Header */
+/* HEADER */
 header {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-    url("portada.jpg");
+    url("WhatsApp Image 2026-02-12 at 10.46.36.jpeg");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -63,99 +72,147 @@ header {
 
 header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 64px;
+    font-size: 60px;
     margin: 10px 0;
     letter-spacing: 3px;
     animation: fadeUp 1.5s ease forwards;
 }
 
-header p { animation: fadeUp 2s ease forwards; }
-
-@keyframes fadeUp {
-    from { opacity:0; transform:translateY(40px); }
-    to { opacity:1; transform:translateY(0); }
+header p {
+    font-size: 18px;
+    animation: fadeUp 2s ease forwards;
 }
 
-/* Secciones */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SECCIONES */
 section {
     min-height: 100vh;
     padding: 120px 20px 60px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
     opacity: 0;
-    transform: translateY(60px);
-    transition: 1s;
+    transform: translateY(50px) scale(0.98);
+    transition: all 1s ease;
 }
 
 section.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 34px;
+    font-size: 32px;
     margin-bottom: 20px;
+    position: relative;
 }
 
+h2::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background: #c6a75e;
+    display: block;
+    margin: 10px auto;
+    transition: 1s;
+}
+
+section.visible h2::after {
+    width: 80px;
+}
+
+/* BOTÓN */
 .button {
     padding: 14px 35px;
     background: #c6a75e;
     color: white;
     border-radius: 30px;
     text-decoration: none;
+    transition: 0.4s;
     margin-top: 20px;
-    transition: .4s;
 }
 
 .button:hover {
     background: #b8954f;
     transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Formulario */
-form {
+/* GALERIA */
+.gallery {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 320px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-input, select, textarea {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-family: 'Montserrat', sans-serif;
-}
-
-textarea { resize: none; }
-
-/* Música */
-#musicBtn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #c6a75e;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
+.gallery img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 15px;
     cursor: pointer;
-    font-size: 18px;
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.08);
+}
+
+/* LIGHTBOX */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+}
+
+/* QR */
+.qr {
+    width: 200px;
+    margin-top: 20px;
+    transition: 0.4s;
+}
+
+.qr:hover {
+    transform: scale(1.1);
+}
+
+footer {
+    padding: 40px;
+    text-align: center;
+    background: #e6dcc8;
 }
 </style>
 </head>
 
 <body>
 
-<div id="particles"></div>
-
 <nav>
 <a href="#detalles">DETALLES</a>
 <a href="#historia">HISTORIA</a>
+<a href="#galeria">GALERÍA</a>
 <a href="#confirmar">CONFIRMAR</a>
 </nav>
 
@@ -174,96 +231,68 @@ textarea { resize: none; }
 
 <section id="historia">
 <h2>Nuestra Historia</h2>
-<p>Aquí pueden escribir su historia de amor.</p>
+<p>Escriban aquí su historia especial.</p>
+</section>
+
+<section>
+<h2>Subí tus fotos 📸</h2>
+<img src="QR.png" class="qr">
+</section>
+
+<section id="galeria">
+<h2>Galería</h2>
+<div class="gallery">
+<img src="foto1.jpg" onclick="openLightbox(this.src)">
+<img src="foto2.jpg" onclick="openLightbox(this.src)">
+<img src="foto3.jpg" onclick="openLightbox(this.src)">
+</div>
 </section>
 
 <section id="confirmar">
 <h2>Confirmar Asistencia</h2>
-<form id="rsvpForm">
-<input type="text" name="nombre" placeholder="Nombre completo" required>
-<select name="asiste">
-<option value="Sí">Asistirá</option>
-<option value="No">No podrá asistir</option>
-</select>
-<input type="number" name="cantidad" placeholder="Cantidad de personas">
-<textarea name="mensaje" placeholder="Mensaje"></textarea>
-<button type="submit" class="button">Enviar Confirmación</button>
-</form>
-<p id="respuesta"></p>
+<a class="button" href="#">Confirmar por WhatsApp</a>
 </section>
 
-<button id="musicBtn">♪</button>
-<audio id="bgMusic" loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
+<footer>
+Con amor ♥
+</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<div id="lightbox" onclick="closeLightbox()">
+<img id="lightbox-img">
+</div>
 
 <script>
-/* Partículas */
-tsParticles.load("particles", {
-particles:{
-number:{value:35},
-color:{value:"#c6a75e"},
-size:{value:{min:1,max:3}},
-move:{enable:true,speed:0.4},
-opacity:{value:0.6}
-}
-});
+// Cuenta regresiva
+var eventDate = new Date("Jul 9, 2026 11:00:00").getTime();
+setInterval(function() {
+var now = new Date().getTime();
+var distance = eventDate - now;
+var days = Math.floor(distance / (1000*60*60*24));
+document.getElementById("countdown").innerHTML =
+"Faltan " + days + " días";
+}, 1000);
 
-/* Animación secciones */
-const sections=document.querySelectorAll("section");
-const observer=new IntersectionObserver(entries=>{
+// Animación profesional
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add("visible");}
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
 });
 },{threshold:0.2});
 sections.forEach(section=>observer.observe(section));
 
-/* Cuenta regresiva */
-var eventDate=new Date("Jul 9, 2026 11:00:00").getTime();
-setInterval(function(){
-var now=new Date().getTime();
-var distance=eventDate-now;
-var days=Math.floor(distance/(1000*60*60*24));
-document.getElementById("countdown").innerHTML="Faltan "+days+" días";
-},1000);
-
-/* Música */
-const music=document.getElementById("bgMusic");
-const btn=document.getElementById("musicBtn");
-btn.onclick=function(){
-if(music.paused){music.play();btn.innerHTML="❚❚";}
-else{music.pause();btn.innerHTML="♪";}
-};
-
-/* Formulario */
-const form=document.getElementById("rsvpForm");
-form.addEventListener("submit",function(e){
-e.preventDefault();
-const data={
-nombre:form.nombre.value,
-asiste:form.asiste.value,
-cantidad:form.cantidad.value,
-mensaje:form.mensaje.value
-};
-fetch("PEGAR_AQUI_TU_URL_DE_GOOGLE_SCRIPT",{
-method:"POST",
-body:JSON.stringify(data)
-}).then(()=>{
-document.getElementById("respuesta").innerText="Gracias por confirmar 💛";
-form.reset();
-});
-});
+// Lightbox
+function openLightbox(src){
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src=src;
+}
+function closeLightbox(){
+document.getElementById("lightbox").style.display="none";
+}
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
 
