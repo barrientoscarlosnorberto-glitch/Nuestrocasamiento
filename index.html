@@ -3,84 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestra Boda</title>
+<title>Ani & Carlos | Nuestra Boda</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
+html { scroll-behavior: smooth; }
+
 body {
     margin: 0;
-    font-family: 'Georgia', serif;
-    background-image: url("fondo-acuarela-liquida-abstracta-lineas-doradas_525068-1889.jpeg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+    background: #f8f6f2;
+    color: #333;
+    overflow-x: hidden;
 }
 
-body::before {
-    content: "";
+/* Partículas */
+#particles {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.85);
+    inset: 0;
     z-index: -1;
 }
 
+/* Navbar */
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 18px 0;
+    text-align: center;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+nav a {
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #444;
+}
+
+nav a:hover { color: #c6a75e; }
+
+/* Header */
 header {
-    background: linear-gradient(rgba(198,167,94,0.35), rgba(198,167,94,0.35)),
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
     url("portada.jpg");
     background-size: cover;
     background-position: center;
-    color: white;
-
-    height: 100vh;              /* ocupa toda la pantalla */
     display: flex;
     flex-direction: column;
-    justify-content: center;    /* centra vertical */
-    align-items: center;        /* centra horizontal */
+    justify-content: center;
+    align-items: center;
+    color: white;
     text-align: center;
 }
 
-
-h1 {
-    font-size: 48px;
-    margin: 0;
-    letter-spacing: 2px;
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    margin: 10px 0;
+    letter-spacing: 3px;
+    animation: fadeUp 1.5s ease forwards;
 }
 
-h2 {
-    margin-top: 20px;
-    font-weight: normal;
-    font-size: 28px;
-    position: relative;
-    display: inline-block;
+header p { animation: fadeUp 2s ease forwards; }
+
+@keyframes fadeUp {
+    from { opacity:0; transform:translateY(40px); }
+    to { opacity:1; transform:translateY(0); }
 }
 
-h2::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #c6a75e;
-    margin: 12px auto 0;
-    transition: width 1s ease;
-}
-
-section.visible h2::after {
-    width: 80px;
-}
-
+/* Secciones */
 section {
-    padding: 60px 20px;
-    max-width: 900px;
-    margin: 60px auto;
-    background: rgba(255,255,255,0.88);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-
+    min-height: 100vh;
+    padding: 120px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     opacity: 0;
     transform: translateY(60px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
+    transition: 1s;
 }
 
 section.visible {
@@ -88,207 +94,173 @@ section.visible {
     transform: translateY(0);
 }
 
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
 .button {
-    display: inline-block;
-    padding: 14px 32px;
-    background-color: #c6a75e;
+    padding: 14px 35px;
+    background: #c6a75e;
     color: white;
-    text-decoration: none;
     border-radius: 30px;
+    text-decoration: none;
     margin-top: 20px;
-    transition: all 0.4s ease;
-    letter-spacing: 1px;
+    transition: .4s;
 }
 
 .button:hover {
-    background-color: #b8954f;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    background: #b8954f;
+    transform: translateY(-4px);
 }
 
-.gallery {
+/* Formulario */
+form {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 15px;
+    width: 320px;
 }
 
-.gallery img {
-    width: 220px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
+input, select, textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.gallery img:hover {
-    transform: scale(1.05);
-}
+textarea { resize: none; }
 
-/* Imagen ampliada */
-#lightbox {
+/* Música */
+#musicBtn {
     position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
-}
-
-#lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-}
-
-footer {
-    background-color: #e6dcc8;
-    padding: 30px;
-    margin-top: 60px;
-}
-    
-.qr {
-    width: 200px;
-    margin-top: 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    transition: transform 0.4s ease;
-}
-
-.qr:hover {
-    transform: scale(1.05);
+    bottom: 25px;
+    right: 25px;
+    background: #c6a75e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    font-size: 18px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Música -->
-<audio autoplay loop>
-  <source src="musica.mp3" type="John Legend - All of Me (Official Video).mp3">
-</audio>
+<div id="particles"></div>
+
+<nav>
+<a href="#detalles">DETALLES</a>
+<a href="#historia">HISTORIA</a>
+<a href="#confirmar">CONFIRMAR</a>
+</nav>
 
 <header>
-    <!-- EDITAR NOMBRES Y FECHA -->
-    <h1>Nuestro casamiento</h1>
-    <h1>Ani & Carlos</h1>
-    <p>9 de julio de 2026</p>
-    <p id="countdown"></p>
+<h1>Ani & Carlos</h1>
+<p>9 de julio de 2026</p>
+<p id="countdown"></p>
 </header>
 
-<section>
-    <h2>Detalles del Evento</h2>
-    <p><strong>Ceremonia:</strong> 11:00 hs</p>
-    <p><strong>Recepción:</strong> 12:30 hs</p>
-    <p><strong>Lugar ceremonia:</strong> Iglesia Parroquial Nuetra Señora del Rosario  – Monteros, Tucumán</p>
-    <a class="button" href="https://maps.app.goo.gl/Kt3pUQE3AhJ3sqKz6" target="_blank">Ver Ubicación</a>
-    <p><strong>Lugar celebracion:</strong> Salón Falak – El Cercado KM 5, Monteros, Tucumán</p>
-    <a class="button" href="https://maps.app.goo.gl/CPNkUQKarg4dU7NZA" target="_blank">Ver Ubicación</a>
+<section id="detalles">
+<h2>Detalles del Evento</h2>
+<p>Ceremonia 11:00 hs</p>
+<p>Recepción 12:30 hs</p>
+<a class="button" href="#">Ver Ubicación</a>
 </section>
 
-<section>
-    <h2>Nuestra Historia</h2>
-    <p>
-    Aquí pueden escribir su historia de amor y hacer este momento aún más especial.
-    </p>
+<section id="historia">
+<h2>Nuestra Historia</h2>
+<p>Aquí pueden escribir su historia de amor.</p>
 </section>
 
-<section>
-    <h2>Padrinos</h2>
-    <p>Madrina: Griselda</p>
-    <p>Padrino: Eduardo</p>
+<section id="confirmar">
+<h2>Confirmar Asistencia</h2>
+<form id="rsvpForm">
+<input type="text" name="nombre" placeholder="Nombre completo" required>
+<select name="asiste">
+<option value="Sí">Asistirá</option>
+<option value="No">No podrá asistir</option>
+</select>
+<input type="number" name="cantidad" placeholder="Cantidad de personas">
+<textarea name="mensaje" placeholder="Mensaje"></textarea>
+<button type="submit" class="button">Enviar Confirmación</button>
+</form>
+<p id="respuesta"></p>
 </section>
 
-<section>
-    <h2>Código de Vestimenta</h2>
-    <p>Formal / Elegante</p>
-</section>
+<button id="musicBtn">♪</button>
+<audio id="bgMusic" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
 
-<section>
-    <h2>Hashtag</h2>
-    <p>#TuBoda2026</p>
-</section>
-
-<section>
-    <h2>Subí tus fotos 📸</h2>
-    <p>Escaneá el código y compartí tus recuerdos con nosotros.</p>
-    
-    <img src="qr.png" alt="QR para subir fotos" class="qr">
-
-</section>
-
-<section>
-    <h2>Galería</h2>
-    <div class="gallery">
-        <!-- AGREGAR O QUITAR FOTOS AQUÍ -->
-        <img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
-        <img src="foto2.jpg" onclick="openLightbox(this.src)">
-        <img src="foto3.jpg" onclick="openLightbox(this.src)">
-    </div>
-</section>
-
-<section>
-    <h2>Regalos</h2>
-    <p>Tu presencia es nuestro mejor regalo.</p>
-    <p>Alias: tuboda.lunademiel</p>
-</section>
-
-<section>
-    <h2>Confirmar Asistencia</h2>
-    <a class="button" href="https://w.app/rsxdmi" target="_blank">
-        Confirmar por WhatsApp
-    </a>
-</section>
-
-<footer>
-    Con amor ♥
-</footer>
-
-<!-- Lightbox -->
-<div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img">
-</div>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
 <script>
-// Cuenta regresiva
-var eventDate = new Date("Jul 9, 2026 11:00:00").getTime();
-setInterval(function() {
-  var now = new Date().getTime();
-  var distance = eventDate - now;
-  var days = Math.floor(distance / (1000*60*60*24));
-  var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-  document.getElementById("countdown").innerHTML =
-  "Faltan " + days + " días " + hours + " hs " + minutes + " min" + seconds + "sec";
-}, 1000);
-
-// Animación al hacer scroll
-const sections = document.querySelectorAll("section");
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.classList.add("visible");
-    }
-  });
+/* Partículas */
+tsParticles.load("particles", {
+particles:{
+number:{value:35},
+color:{value:"#c6a75e"},
+size:{value:{min:1,max:3}},
+move:{enable:true,speed:0.4},
+opacity:{value:0.6}
+}
 });
 
-// Lightbox
-function openLightbox(src){
-  document.getElementById("lightbox").style.display="flex";
-  document.getElementById("lightbox-img").src=src;
-}
-function closeLightbox(){
-  document.getElementById("lightbox").style.display="none";
-}
+/* Animación secciones */
+const sections=document.querySelectorAll("section");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add("visible");}
+});
+},{threshold:0.2});
+sections.forEach(section=>observer.observe(section));
+
+/* Cuenta regresiva */
+var eventDate=new Date("Jul 9, 2026 11:00:00").getTime();
+setInterval(function(){
+var now=new Date().getTime();
+var distance=eventDate-now;
+var days=Math.floor(distance/(1000*60*60*24));
+document.getElementById("countdown").innerHTML="Faltan "+days+" días";
+},1000);
+
+/* Música */
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+btn.onclick=function(){
+if(music.paused){music.play();btn.innerHTML="❚❚";}
+else{music.pause();btn.innerHTML="♪";}
+};
+
+/* Formulario */
+const form=document.getElementById("rsvpForm");
+form.addEventListener("submit",function(e){
+e.preventDefault();
+const data={
+nombre:form.nombre.value,
+asiste:form.asiste.value,
+cantidad:form.cantidad.value,
+mensaje:form.mensaje.value
+};
+fetch("PEGAR_AQUI_TU_URL_DE_GOOGLE_SCRIPT",{
+method:"POST",
+body:JSON.stringify(data)
+}).then(()=>{
+document.getElementById("respuesta").innerText="Gracias por confirmar 💛";
+form.reset();
+});
+});
 </script>
 
 </body>
 </html>
+
+
 
 
 
