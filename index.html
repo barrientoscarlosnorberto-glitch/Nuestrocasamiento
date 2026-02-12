@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background-image: url("fondo.jpg");
+    background-image: url("marmol.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -27,13 +27,20 @@ body::before {
 }
 
 header {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
     url("portada.jpg");
     background-size: cover;
     background-position: center;
     color: white;
-    padding: 140px 20px;
+
+    height: 100vh;              /* ocupa toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* centra vertical */
+    align-items: center;        /* centra horizontal */
+    text-align: center;
 }
+
 
 h1 {
     font-size: 48px;
@@ -54,6 +61,11 @@ section {
     opacity: 0;
     transform: translateY(40px);
     transition: 1s ease;
+    background: rgba(255,255,255,0.85);
+border-radius: 10px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+margin-bottom: 40px;
+
 }
 
 section.visible {
@@ -212,7 +224,7 @@ setInterval(function() {
   var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
   var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
   document.getElementById("countdown").innerHTML =
-  "Faltan " + days + " días " + hours + " hs " + minutes + " min";
+  "Faltan " + days + " días " + hours + " hs " + minutes + " min" + seconds + "sec";
 }, 1000);
 
 // Animación al hacer scroll
@@ -238,5 +250,6 @@ function closeLightbox(){
 
 </body>
 </html>
+
 
 
