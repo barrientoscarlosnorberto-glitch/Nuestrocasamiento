@@ -224,9 +224,12 @@ footer {
 
 <section id="detalles">
 <h2>Detalles del Evento</h2>
-<p>Ceremonia 11:00 hs</p>
-<p>Recepción 12:30 hs</p>
-<a class="button" href="#">Ver Ubicación</a>
+<p><strong>Ceremonia:</strong> 12:00 hs</p>
+<p><strong>Recepción:</strong> 12:30 hs</p>
+<p><strong>Lugar ceremonia:</strong> Iglesia Parroquial Nuetra Señora del Rosario – Monteros, Tucumán</p> 
+<a class="button" href="https://maps.app.goo.gl/Kt3pUQE3AhJ3sqKz6" target="_blank">Ver Ubicación</a> 
+<p><strong>Lugar celebracion:</strong> Salón Falak – El Cercado KM 5, Monteros, Tucumán</p>
+<a class="button" href="https://maps.app.goo.gl/CPNkUQKarg4dU7NZA" target="_blank">Ver Ubicación</a>
 </section>
 
 <section id="historia">
@@ -242,15 +245,33 @@ footer {
 <section id="galeria">
 <h2>Galería</h2>
 <div class="gallery">
-<img src="foto1.jpg" onclick="openLightbox(this.src)">
-<img src="foto2.jpg" onclick="openLightbox(this.src)">
-<img src="foto3.jpg" onclick="openLightbox(this.src)">
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
 </div>
+</section>
+
+<section> 
+<h2>Padrinos</h2> 
+<p>Madrina: Griselda</p> 
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
+<p>Padrino: Eduardo</p> 
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
+</section>
+
+<section> 
+<h2>Código de Vestimenta</h2>
+<p>Formal / Elegante</p> 
+</section>
+
+<section> 
+<h2>Gama de colores</h2>
+<p>AZUL - ROJO - AMARILLO</p> 
 </section>
 
 <section id="confirmar">
 <h2>Confirmar Asistencia</h2>
-<a class="button" href="#">Confirmar por WhatsApp</a>
+<a class="button" href="https://w.app/rsxdmi" target="_blank">Confirmar por WhatsApp</a>
 </section>
 
 <footer>
@@ -263,13 +284,15 @@ Con amor ♥
 
 <script>
 // Cuenta regresiva
-var eventDate = new Date("Jul 9, 2026 11:00:00").getTime();
+var eventDate = new Date("Jul 9, 2026 12:00:00").getTime();
 setInterval(function() {
-var now = new Date().getTime();
-var distance = eventDate - now;
-var days = Math.floor(distance / (1000*60*60*24));
-document.getElementById("countdown").innerHTML =
-"Faltan " + days + " días";
+  var now = new Date().getTime();
+  var distance = eventDate - now;
+  var days = Math.floor(distance / (1000*60*60*24));
+  var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+  document.getElementById("countdown").innerHTML =
+  "Faltan " + days + " días " + hours + " hs " + minutes + " min";
 }, 1000);
 
 // Animación profesional
@@ -295,4 +318,5 @@ document.getElementById("lightbox").style.display="none";
 
 </body>
 </html>
+
 
