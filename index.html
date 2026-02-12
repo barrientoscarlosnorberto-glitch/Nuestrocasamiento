@@ -4,23 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestra Boda</title>
-    <style>
-.monograma {
-    font-size: 80px;
-    letter-spacing: 8px;
-    animation: fadeIn 2s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 <style>
 body {
@@ -44,11 +27,11 @@ body::before {
 }
 
 header {
-    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    background: linear-gradient(rgba(198,167,94,0.35), rgba(198,167,94,0.35)),
     url("portada.jpg");
     background-size: cover;
     background-position: center;
-    color: #c6a75e;
+    color: white;
 
     height: 100vh;              /* ocupa toda la pantalla */
     display: flex;
@@ -167,6 +150,18 @@ footer {
     padding: 30px;
     margin-top: 60px;
 }
+    
+.qr {
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease;
+}
+
+.qr:hover {
+    transform: scale(1.05);
+}
 </style>
 </head>
 
@@ -216,6 +211,14 @@ footer {
 <section>
     <h2>Hashtag</h2>
     <p>#TuBoda2026</p>
+</section>
+
+<section>
+    <h2>Subí tus fotos 📸</h2>
+    <p>Escaneá el código y compartí tus recuerdos con nosotros.</p>
+    
+    <img src="qr.png" alt="QR para subir fotos" class="qr">
+
 </section>
 
 <section>
@@ -286,6 +289,7 @@ function closeLightbox(){
 
 </body>
 </html>
+
 
 
 
