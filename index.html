@@ -4,12 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuestra Boda</title>
+.monograma {
+    font-size: 80px;
+    letter-spacing: 8px;
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 <style>
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background-image: url("marmol.jpg");
+    background-image: url("fondo-acuarela-liquida-abstracta-lineas-doradas_525068-1889.jpeg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -49,23 +65,38 @@ h1 {
 }
 
 h2 {
-    margin-top: 70px;
+    margin-top: 20px;
     font-weight: normal;
     font-size: 28px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #c6a75e;
+    margin: 12px auto 0;
+    transition: width 1s ease;
+}
+
+section.visible h2::after {
+    width: 80px;
 }
 
 section {
-    padding: 50px 20px;
+    padding: 60px 20px;
     max-width: 900px;
-    margin: auto;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1s ease;
-    background: rgba(255,255,255,0.85);
-border-radius: 10px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-margin-bottom: 40px;
+    margin: 60px auto;
+    background: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 section.visible {
@@ -75,17 +106,20 @@ section.visible {
 
 .button {
     display: inline-block;
-    padding: 12px 28px;
-    background-color: #b49a67;
+    padding: 14px 32px;
+    background-color: #c6a75e;
     color: white;
     text-decoration: none;
     border-radius: 30px;
-    margin-top: 15px;
-    transition: 0.3s;
+    margin-top: 20px;
+    transition: all 0.4s ease;
+    letter-spacing: 1px;
 }
 
 .button:hover {
-    background-color: #9f8658;
+    background-color: #b8954f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .gallery {
@@ -144,6 +178,7 @@ footer {
 
 <header>
     <!-- EDITAR NOMBRES Y FECHA -->
+    <h1>Nuestro casamiento</h1>
     <h1>Ani & Carlos</h1>
     <p>9 de julio de 2026</p>
     <p id="countdown"></p>
@@ -250,6 +285,7 @@ function closeLightbox(){
 
 </body>
 </html>
+
 
 
 
