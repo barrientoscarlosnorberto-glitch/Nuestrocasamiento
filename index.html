@@ -191,6 +191,27 @@ border:1px solid rgba(230,194,122,0.2);
 margin-top:20px;
 }
 
+.qr-box{
+margin:30px 0;
+display:flex;
+justify-content:center;
+}
+
+.qr-box img{
+width:180px;
+height:180px;
+padding:15px;
+background:rgba(255,255,255,0.05);
+border-radius:20px;
+box-shadow:0 0 25px rgba(230,194,122,0.4);
+transition:0.4s;
+}
+
+.qr-box img:hover{
+transform:scale(1.05);
+box-shadow:0 0 35px rgba(230,194,122,0.7);
+}
+
 footer{
 text-align:center;
 padding:40px 20px;
@@ -279,6 +300,27 @@ Alias: ani.carlos.boda<br>
 CBU: 0000000000000000000000<br>
 Titular: Carlos XXXXX
 </div>
+</div>
+</section>
+
+<section class="section">
+<div class="card">
+<h2>Compartí tus Fotos</h2>
+<div class="divider"></div>
+
+<p>
+Queremos revivir cada momento de nuestra boda.<br>
+Subí tus fotos y videos escaneando el código QR o tocando el botón.
+</p>
+
+<div class="qr-box">
+<img src="QR_BODA.png" alt="QR Subir Fotos">
+</div>
+
+<a class="button" href="LINK_SUBIDA_FOTOS" target="_blank">
+Subir Fotos
+</a>
+
 </div>
 </section>
 
@@ -373,5 +415,6 @@ cards.forEach(card=>observer.observe(card));
 
 </body>
 </html>
+
 
 
