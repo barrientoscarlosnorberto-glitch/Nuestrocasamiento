@@ -5,277 +5,294 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ani & Carlos | Nuestra Boda</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-html { scroll-behavior: smooth; }
-
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-image: url("fondo-acuarela-liquida-abstracta-lineas-doradas_525068-1889.jpeg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #333;
-    overflow-x: hidden;
+:root{
+--gold:#c6a75e;
+--soft:#f8f6f2;
+--text:#2e2e2e;
+--blur: blur(18px);
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(255,255,255,0.88);
-    z-index: -1;
+html{scroll-behavior:smooth;}
+
+body{
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:url("fondo-acuarela-liquida-abstracta-lineas-doradas_525068-1889.jpeg") center/cover fixed;
+color:var(--text);
+overflow-x:hidden;
 }
 
-/* INTRO ANIMADO */
-#intro {
-    position: fixed;
-    inset: 0;
-    background: #f8f6f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    z-index: 2000;
-    animation: fadeOutIntro 2s ease 2s forwards;
-}
-@keyframes fadeOutIntro {
-    to { opacity: 0; visibility: hidden; }
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(255,255,255,.9);
+z-index:-1;
 }
 
-/* NAVBAR */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 15px 0;
-    text-align: center;
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(10px);
-    z-index: 999;
+/* INTRO */
+#intro{
+position:fixed;
+inset:0;
+background:var(--soft);
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Playfair Display',serif;
+font-size:34px;
+letter-spacing:3px;
+z-index:3000;
+animation:introFade 2.5s ease forwards 2s;
 }
 
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #444;
-    font-size: 14px;
-    letter-spacing: 1px;
+@keyframes introFade{
+to{opacity:0;visibility:hidden;}
 }
 
-nav a:hover { color: #c6a75e; }
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 0;
+text-align:center;
+background:rgba(255,255,255,.5);
+backdrop-filter:var(--blur);
+z-index:1000;
+transition:.4s;
+}
 
-#menuToggle {
-    display: none;
-    font-size: 26px;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 10px;
+nav a{
+margin:0 20px;
+text-decoration:none;
+color:#444;
+font-size:14px;
+letter-spacing:2px;
+font-weight:500;
+transition:.3s;
+}
+
+nav a:hover{color:var(--gold);}
+
+#menuToggle{
+display:none;
+font-size:28px;
+position:absolute;
+right:20px;
+top:15px;
+cursor:pointer;
 }
 
 /* HEADER */
-header {
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-    url("WhatsApp Image 2026-02-12 at 10.46.36.jpeg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    padding: 0 20px;
-}
-
-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    margin: 10px 0;
-    letter-spacing: 3px;
-    animation: fadeUp 1.5s ease forwards;
-}
-
-header p {
-    font-size: 18px;
-    animation: fadeUp 2s ease forwards;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* SECCIONES */
-section {
-    min-height: 100vh;
-    padding: 120px 20px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 1s;
-}
-
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-}
-
-/* BOTÓN */
-.button {
-    padding: 14px 35px;
-    background: #c6a75e;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    margin-top: 20px;
-}
-
-/* GALERIA */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.gallery img {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-.gallery img:hover {
-    transform: scale(1.08);
-}
-
-/* LIGHTBOX */
-#lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-#lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 15px;
-}
-
-/* QR */
-.qr {
-    width: 200px;
-    margin-top: 20px;
-    transition: 0.4s;
-}
-
-.qr:hover { transform: scale(1.1); }
-
-/* MUSICA */
-#musicBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    border: none;
-    background: #c6a75e;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-/* RESPONSIVE PROFESIONAL */
-@media (max-width:768px){
-
-body{
-    background-attachment: scroll;
-}
-
-section{
-    padding:100px 20px 80px;
+header{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),
+url("WhatsApp Image 2026-02-12 at 10.46.36.jpeg") center/cover;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+padding:0 20px;
 }
 
 header h1{
-    font-size:36px;
-    letter-spacing:2px;
+font-family:'Playfair Display',serif;
+font-size:70px;
+letter-spacing:4px;
+animation:fadeUp 1.5s ease forwards;
 }
 
 header p{
-    font-size:16px;
+font-size:18px;
+margin:5px 0;
+animation:fadeUp 2s ease forwards;
 }
 
-nav a { display:none; }
-
-#menuToggle { display:block; }
-
-nav.active{
-    background:rgba(255,255,255,0.95);
+#countdown{
+margin-top:15px;
+font-weight:500;
+letter-spacing:1px;
 }
 
-nav.active a{
-    display:block;
-    margin:10px 0;
-    font-size:16px;
+/* SECCIONES */
+section{
+min-height:100vh;
+padding:140px 20px 80px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+opacity:0;
+transform:translateY(80px) scale(.95);
+transition:1.2s cubic-bezier(.17,.67,.3,1.3);
 }
 
+section.visible{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+h2{
+font-family:'Playfair Display',serif;
+font-size:36px;
+margin-bottom:25px;
+}
+
+/* BOTÓN */
 .button{
-    padding:16px 40px;
-    font-size:16px;
+padding:15px 40px;
+background:var(--gold);
+color:white;
+border-radius:40px;
+text-decoration:none;
+margin:15px 0;
+font-weight:500;
+letter-spacing:1px;
+transition:.4s;
 }
 
+.button:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* GALERIA */
 .gallery{
-    overflow-x:auto;
-    flex-wrap:nowrap;
-    scroll-snap-type:x mandatory;
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 .gallery img{
-    width:180px;
-    height:180px;
-    scroll-snap-align:center;
+width:260px;
+height:260px;
+object-fit:cover;
+border-radius:20px;
+cursor:pointer;
+transition:.5s;
 }
 
-.qr { width:160px; }
+.gallery img:hover{
+transform:scale(1.1);
+}
 
+/* LIGHTBOX */
+#lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:2000;
+animation:fade .4s ease;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:20px;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* QR */
+.qr{
+width:220px;
+margin-top:25px;
+transition:.5s;
+}
+
+.qr:hover{transform:scale(1.1);}
+
+/* MÚSICA */
 #musicBtn{
-    width:60px;
-    height:60px;
-    font-size:20px;
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+border:none;
+background:var(--gold);
+color:white;
+font-size:20px;
+cursor:pointer;
+z-index:2000;
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+transition:.3s;
 }
 
+#musicBtn:hover{transform:scale(1.1);}
+
+/* FOOTER */
 footer{
-    padding:60px 20px;
+padding:60px 20px;
+text-align:center;
+background:#e6dcc8;
+font-family:'Playfair Display',serif;
+font-size:18px;
 }
 
+/* RESPONSIVE */
+@media(max-width:768px){
+
+body{background-attachment:scroll;}
+
+header h1{font-size:38px;}
+
+header p{font-size:16px;}
+
+section{
+padding:120px 20px 90px;
 }
 
-footer {
-    padding:40px;
-    text-align:center;
-    background:#e6dcc8;
+h2{font-size:28px;}
+
+nav a{display:none;}
+
+#menuToggle{display:block;}
+
+nav.active{
+background:rgba(255,255,255,.95);
+}
+
+nav.active a{
+display:block;
+margin:15px 0;
+font-size:16px;
+}
+
+.gallery{
+flex-wrap:nowrap;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+}
+
+.gallery img{
+width:200px;
+height:200px;
+scroll-snap-align:center;
+}
+
+.button{
+width:85%;
+max-width:300px;
+}
+
+.qr{width:170px;}
+
 }
 </style>
 </head>
@@ -298,59 +315,59 @@ footer {
 <p id="countdown"></p>
 </header>
 
-<section id="detalles"> 
+<section id="detalles">
 <h2>Detalles del Evento</h2>
 <p><strong>Ceremonia:</strong> 12:00 hs</p>
-<p><strong>Recepción:</strong> 12:30 hs</p> 
-<p><strong>Lugar ceremonia:</strong> Iglesia Parroquial Nuetra Señora del Rosario – Monteros, Tucumán</p> 
+<p><strong>Recepción:</strong> 12:30 hs</p>
+<p><strong>Lugar ceremonia:</strong> Iglesia Parroquial Nuestra Señora del Rosario – Monteros, Tucumán</p>
 <a class="button" href="https://maps.app.goo.gl/Kt3pUQE3AhJ3sqKz6" target="_blank">Ver Ubicación</a>
-<p><strong>Lugar celebracion:</strong> Salón Falak – El Cercado KM 5, Monteros, Tucumán</p> 
-<a class="button" href="https://maps.app.goo.gl/CPNkUQKarg4dU7NZA" target="_blank">Ver Ubicación</a> 
+<p><strong>Lugar celebración:</strong> Salón Falak – El Cercado KM 5, Monteros, Tucumán</p>
+<a class="button" href="https://maps.app.goo.gl/CPNkUQKarg4dU7NZA" target="_blank">Ver Ubicación</a>
 </section>
 
-<section id="historia"> 
-<h2>Nuestra Historia</h2> 
+<section id="historia">
+<h2>Nuestra Historia</h2>
 <p>Escriban aquí su historia especial.</p>
 </section>
-    
-<section> 
+
+<section>
 <h2>Subí tus fotos 📸</h2>
 <img src="QR.png" class="qr">
 </section>
-    
-<section id="galeria"> 
-<h2>Galería</h2> 
-<div class="gallery"> 
-<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
-<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
-<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
-</div> 
+
+<section id="galeria">
+<h2>Galería</h2>
+<div class="gallery">
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
+</div>
 </section>
-    
+
 <section>
 <h2>Padrinos</h2>
 <p>Madrina: Griselda</p>
 <img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
 <p>Padrino: Eduardo</p>
-<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)"> 
-</section> 
-    
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" onclick="openLightbox(this.src)">
+</section>
+
 <section>
 <h2>Código de Vestimenta</h2>
-<p>Formal / Elegante</p> 
-</section> 
-    
+<p>Formal / Elegante</p>
+</section>
+
 <section>
-<h2>Gama de colores</h2> 
+<h2>Gama de colores</h2>
 <p>AZUL - ROJO - AMARILLO</p>
 </section>
-    
-<section id="confirmar"> 
+
+<section id="confirmar">
 <h2>Confirmar Asistencia</h2>
 <a class="button" href="https://w.app/rsxdmi" target="_blank">Confirmar por WhatsApp</a>
-</section> 
+</section>
 
-<footer> Con amor ♥ </footer>
+<footer>Con amor ♥</footer>
 
 <button id="musicBtn">♪</button>
 <audio id="bgMusic" loop>
@@ -362,28 +379,28 @@ footer {
 </div>
 
 <script>
-// Cuenta regresiva
-var eventDate = new Date("Jul 9, 2026 12:00:00").getTime();
-setInterval(function() {
-var now = new Date().getTime();
-var distance = eventDate - now;
-var days = Math.floor(distance / (1000*60*60*24));
-var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-document.getElementById("countdown").innerHTML =
-"Faltan " + days + " días " + hours + " hs " + minutes + " min";
-}, 1000);
+// COUNTDOWN
+var eventDate=new Date("Jul 9, 2026 12:00:00").getTime();
+setInterval(()=>{
+var now=new Date().getTime();
+var distance=eventDate-now;
+var d=Math.floor(distance/(1000*60*60*24));
+var h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var m=Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById("countdown").innerHTML=
+"Faltan "+d+" días "+h+" hs "+m+" min";
+},1000);
 
-// Animación secciones
-const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries=>{
+// ANIMACIONES
+const sections=document.querySelectorAll("section");
+const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
-if(entry.isIntersecting){ entry.target.classList.add("visible"); }
+if(entry.isIntersecting){entry.target.classList.add("visible");}
 });
-},{threshold:0.2});
-sections.forEach(section=>observer.observe(section));
+},{threshold:.25});
+sections.forEach(sec=>observer.observe(sec));
 
-// Lightbox
+// LIGHTBOX
 function openLightbox(src){
 document.getElementById("lightbox").style.display="flex";
 document.getElementById("lightbox-img").src=src;
@@ -392,35 +409,34 @@ function closeLightbox(){
 document.getElementById("lightbox").style.display="none";
 }
 
-// Música con fade
+// MÚSICA
 const music=document.getElementById("bgMusic");
 const btn=document.getElementById("musicBtn");
 
 function fadeIn(){
 music.volume=0;
 music.play();
-let vol=0;
-let interval=setInterval(()=>{
-if(vol<1){ vol+=0.05; music.volume=vol; }
-else{ clearInterval(interval); }
+let v=0;
+let i=setInterval(()=>{
+if(v<1){v+=0.03;music.volume=v;}
+else clearInterval(i);
 },100);
 }
-
 function fadeOut(){
-let vol=music.volume;
-let interval=setInterval(()=>{
-if(vol>0){ vol-=0.05; music.volume=vol; }
-else{ music.pause(); clearInterval(interval); }
+let v=music.volume;
+let i=setInterval(()=>{
+if(v>0){v-=0.03;music.volume=v;}
+else{music.pause();clearInterval(i);}
 },100);
 }
 
-btn.addEventListener("click",function(){
-if(music.paused){ fadeIn(); btn.innerHTML="❚❚"; }
-else{ fadeOut(); btn.innerHTML="♪"; }
+btn.addEventListener("click",()=>{
+if(music.paused){fadeIn();btn.innerHTML="❚❚";}
+else{fadeOut();btn.innerHTML="♪";}
 });
 
-// Menú hamburguesa
-document.getElementById("menuToggle").addEventListener("click",function(){
+// MENÚ
+document.getElementById("menuToggle").addEventListener("click",()=>{
 document.getElementById("navbar").classList.toggle("active");
 });
 </script>
