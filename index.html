@@ -10,11 +10,12 @@
     <style>
         :root {
             --gold: #c6a75e;
-            --glass: rgba(255, 255, 255, 0.25);
-            --blur: blur(20px);
-            --text: #2b2b2b;
+            --glass: rgba(255, 255, 255, 0.7);
             --background: #0f0f14;
             --light-background: #f8f6f2;
+            --text-color: #333;
+            --font-size-large: 2.5em;
+            --font-size-medium: 1.2em;
         }
 
         * {
@@ -25,9 +26,9 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            color: var(--text);
-            overflow-x: hidden;
+            color: var(--text-color);
             background: var(--background);
+            overflow-x: hidden;
         }
 
         canvas {
@@ -35,14 +36,6 @@
             top: 0;
             left: 0;
             z-index: -2;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
-            z-index: -1;
         }
 
         #intro {
@@ -53,13 +46,13 @@
             align-items: center;
             justify-content: center;
             font-family: 'Playfair Display', serif;
-            font-size: 50px;
+            font-size: var(--font-size-large);
             letter-spacing: 8px;
             z-index: 5000;
-            animation: introOut 2.5s ease forwards 2s;
+            animation: fadeOut 2.5s ease forwards 2s;
         }
 
-        @keyframes introOut {
+        @keyframes fadeOut {
             to {
                 opacity: 0;
                 visibility: hidden;
@@ -74,37 +67,21 @@
             padding: 20px;
             text-align: center;
             background: var(--glass);
-            backdrop-filter: var(--blur);
+            backdrop-filter: blur(10px);
             z-index: 3000;
         }
 
         nav a {
             margin: 0 20px;
             text-decoration: none;
-            color: #333;
-            font-size: 16px;
-            letter-spacing: 1px;
-            position: relative;
+            color: var(--text-color);
+            font-size: 1.1em;
+            letter-spacing: 1.5px;
             transition: color 0.3s;
-        }
-
-        nav a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            left: 0;
-            bottom: -5px;
-            transition: width 0.4s;
         }
 
         nav a:hover {
             color: var(--gold);
-        }
-
-        nav a:hover::after {
-            width: 100%;
         }
 
         #menuToggle {
@@ -118,7 +95,7 @@
 
         header {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                 url("WhatsApp Image 2026-02-12 at 10.46.36.jpeg") center/cover;
             display: flex;
             flex-direction: column;
@@ -126,35 +103,27 @@
             align-items: center;
             text-align: center;
             color: white;
-            perspective: 1000px;
         }
 
         header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 80px;
+            font-size: 3em;
             letter-spacing: 6px;
-            transform: translateZ(80px);
-            animation: heroFade 2s ease forwards 1s;
+            animation: fadeIn 2s ease forwards 1s;
             opacity: 0;
         }
 
         header p {
             margin-top: 15px;
-            font-size: 22px;
+            font-size: 1.5em;
             opacity: 0;
-            animation: heroFade 2s ease forwards 1.5s;
+            animation: fadeIn 2s ease forwards 1.5s;
         }
 
-        @keyframes heroFade {
+        @keyframes fadeIn {
             to {
                 opacity: 1;
-                transform: translateZ(0);
             }
-        }
-
-        #countdown {
-            margin-top: 20px;
-            font-size: 24px;
         }
 
         section {
@@ -162,160 +131,83 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 120px 20px;
-            opacity: 0;
-            transform: translateY(80px);
-            transition: 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-            perspective: 1000px;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+            padding: 8% 5%;
+            transition: 1.2s;
         }
 
         .card {
-            max-width: 900px;
+            max-width: 800px;
             width: 100%;
             background: var(--glass);
-            backdrop-filter: var(--blur);
             border-radius: 30px;
-            padding: 60px 40px;
+            padding: 40px;
             text-align: center;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
-            transform-style: preserve-3d;
-            transition: 0.6s;
-        }
-
-        .card:hover {
-            transform: rotateX(5deg) rotateY(-5deg) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 38px;
-            margin-bottom: 25px;
+            font-size: 2em;
+            margin-bottom: 20px;
             color: var(--gold);
         }
 
         .button {
-            display: inline-block;
-            padding: 15px 45px;
+            padding: 15px 30px;
             background: var(--gold);
             color: white;
-            border-radius: 50px;
+            border-radius: 30px;
             text-decoration: none;
-            margin: 15px 10px;
-            transition: 0.4s;
-            font-size: 16px;
-            font-weight: 500;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s, box-shadow 0.4s;
+            font-size: 1em;
+            margin-top: 10px;
         }
 
         .button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .gallery {
             display: flex;
-            gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 20px;
         }
 
         .gallery img {
             width: 240px;
             height: 240px;
             object-fit: cover;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.5s;
+            border-radius: 15px;
+            transition: transform 0.5s, filter 0.5s;
         }
 
         .gallery img:hover {
-            transform: scale(1.08) rotateZ(1deg);
-        }
-
-        #lightbox {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 6000;
-        }
-
-        #lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 20px;
-        }
-
-        .qr {
-            width: 200px;
-            margin-top: 20px;
-            transition: 0.4s;
-        }
-
-        .qr:hover {
-            transform: scale(1.1);
-        }
-
-        #musicBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: none;
-            background: var(--gold);
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 7000;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            filter: brightness(1.1);
         }
 
         footer {
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
             background: #e6dcc8;
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: var(--text);
+            font-size: 1.2em;
         }
 
-        @media(max-width: 768px) {
+        @media (max-width: 768px) {
             header h1 {
-                font-size: 42px;
+                font-size: 2em;
             }
 
             .card {
-                padding: 40px 25px;
-            }
-
-            .gallery {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-            }
-
-            .gallery img {
-                width: 200px;
-                height: 200px;
-                scroll-snap-align: center;
+                padding: 20px;
             }
 
             .button {
                 width: 90%;
                 max-width: 300px;
-            }
-
-            .qr {
-                width: 160px;
             }
 
             nav a {
@@ -327,9 +219,9 @@
             }
 
             nav.active a {
-                display: block;
-                margin: 15px 0;
-                font-size: 16px;
+                display: inline-block;
+                margin: 10px 0;
+                font-size: 1em;
             }
         }
     </style>
@@ -352,7 +244,6 @@
 <header>
     <h1>Ani & Carlos</h1>
     <p>9 de julio de 2026</p>
-    <p id="countdown"></p>
 </header>
 
 <section id="detalles">
@@ -465,32 +356,10 @@
     function update() {
         particles.forEach(p => {
             p.y += p.d;
-            if (p.y > canvas.height) { p.y = 0 }
+            if (p.y > canvas.height) { p.y = 0; }
         });
     }
     setInterval(draw, 33);
-
-    // COUNTDOWN
-    var eventDate = new Date("Jul 9, 2026 12:00:00").getTime();
-    setInterval(() => {
-        var now = new Date().getTime();
-        var distance = eventDate - now;
-        var d = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById("countdown").innerHTML =
-            "Faltan " + d + " días " + h + " hs " + m + " min";
-    }, 1000);
-
-    // SCROLL
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) { entry.target.classList.add("visible"); }
-        });
-    }, { threshold: 0.25 });
-
-    sections.forEach(sec => observer.observe(sec));
 
     // LIGHTBOX
     function openLightbox(src) {
@@ -524,7 +393,6 @@
     document.getElementById("menuToggle").addEventListener("click", () => {
         document.getElementById("navbar").classList.toggle("active");
     });
-
 </script>
 
 </body>
