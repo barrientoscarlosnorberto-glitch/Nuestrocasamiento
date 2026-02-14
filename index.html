@@ -175,12 +175,22 @@ margin-bottom:40px;
 }
 
 .padrino img{
-width:180px;
-height:220px;
+width:150px;
+height:150px;
 object-fit:cover;
-border-radius:20px;
-margin-top:10px;
-box-shadow:0 0 20px rgba(230,194,122,0.4);
+border-radius:50%;
+margin-top:15px;
+box-shadow:0 0 25px rgba(230,194,122,0.5);
+transition:0.4s;
+}
+
+.padrino img:hover{
+transform:scale(1.08);
+box-shadow:0 0 35px rgba(230,194,122,0.8);
+}
+
+.padrino{
+text-align:center;
 }
 
 .regalos-box{
@@ -274,14 +284,37 @@ Salón Falak – El Cercado KM 5, Monteros
 <h2>Padrinos</h2>
 <div class="divider"></div>
 
+<section class="section">
+<div class="card">
+<h2>Padrinos & Madrinas</h2>
+<div class="divider"></div>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:40px;">
+
 <div class="padrino">
-<p>Madrina: <strong>Griselda</strong></p>
-<img src="FOTO_MADRINA.jpg">
+<p>Madrina</p>
+<strong>Griselda</strong>
+<img src="Griselda.jpg.jpg">
 </div>
 
 <div class="padrino">
-<p>Padrino: <strong>Eduardo</strong></p>
-<img src="FOTO_PADRINO.jpg">
+<p>Madrina</p>
+<strong>Alicia</strong>
+<img src="FOTO_MADRINA2.jpg">
+</div>
+
+<div class="padrino">
+<p>Padrino</p>
+<strong>Eduardo</strong>
+<img src="FOTO_PADRINO1.jpg">
+</div>
+
+<div class="padrino">
+<p>Padrino</p>
+<strong>Guillermo</strong>
+<img src="Grillermo.jpg">
+</div>
+
 </div>
 </div>
 </section>
@@ -300,6 +333,44 @@ Alias: ani.carlos.boda<br>
 CBU: 0000000000000000000000<br>
 Titular: Carlos XXXXX
 </div>
+</div>
+</section>
+
+  <section class="section">
+<div class="card">
+<h2>Código de Vestimenta</h2>
+<div class="divider"></div>
+
+<p>La ceremonia y recepción serán de estilo</p>
+<h3 style="margin-top:10px; letter-spacing:3px; color:#e6c27a;">ELEGANTE / FORMAL</h3>
+
+<p style="margin-top:25px;">
+Colores reservados para novios y damas de honor:
+</p>
+
+<div style="display:flex; justify-content:center; gap:25px; margin-top:30px;">
+
+<div style="text-align:center;">
+<div style="width:50px; height:50px; border-radius:50%; background:white; margin:auto; box-shadow:0 0 15px rgba(255,255,255,0.6);"></div>
+<p style="margin-top:10px;">Blanco</p>
+</div>
+
+<div style="text-align:center;">
+<div style="width:50px; height:50px; border-radius:50%; background:#6e1f2b; margin:auto; box-shadow:0 0 15px rgba(110,31,43,0.6);"></div>
+<p style="margin-top:10px;">Bordó</p>
+</div>
+
+<div style="text-align:center;">
+<div style="width:50px; height:50px; border-radius:50%; background:#7a7a7a; margin:auto; box-shadow:0 0 15px rgba(122,122,122,0.6);"></div>
+<p style="margin-top:10px;">Gris</p>
+</div>
+
+</div>
+
+<p style="margin-top:30px; font-size:0.9rem; opacity:0.8;">
+Les pedimos evitar estos colores para mantener la armonía estética del evento.
+</p>
+
 </div>
 </section>
 
@@ -415,6 +486,7 @@ cards.forEach(card=>observer.observe(card));
 
 </body>
 </html>
+
 
 
 
