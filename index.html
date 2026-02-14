@@ -29,23 +29,28 @@ justify-content:center;
 z-index:999;
 animation:fadeOut 3s ease forwards;
 animation-delay:3s;
+flex-direction:column;
+text-align:center;
+padding:20px;
 }
 
 .intro h1{
 font-family:'Playfair Display', serif;
-font-size:3rem;
-letter-spacing:8px;
+font-size:2.8rem;
+letter-spacing:4px;
 color:#e6c27a;
 animation:fadeIn 2s ease;
 }
 
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
+.intro p{
+margin-top:15px;
+letter-spacing:3px;
+font-size:0.9rem;
+opacity:0.8;
 }
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
-}
+
+@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 
 /* PARTICULAS */
 canvas{
@@ -234,12 +239,40 @@ transform:scale(1.08);
 box-shadow:0 0 35px rgba(230,194,122,0.8);
 }
 
+/* REGALOS */
 .regalos-box{
 background:rgba(230,194,122,0.08);
 padding:25px;
 border-radius:20px;
 border:1px solid rgba(230,194,122,0.2);
 margin-top:20px;
+}
+
+/* QR */
+.qr-box{
+margin-top:20px;
+}
+.qr-box img{
+width:160px;
+height:160px;
+border-radius:15px;
+box-shadow:0 0 25px rgba(230,194,122,0.5);
+}
+
+/* MUSICA */
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#e6c27a;
+color:#1a1410;
+border:none;
+padding:10px 18px;
+border-radius:30px;
+cursor:pointer;
+z-index:1000;
+font-weight:bold;
+box-shadow:0 0 20px rgba(230,194,122,0.6);
 }
 
 footer{
@@ -258,8 +291,14 @@ letter-spacing:4px;
 
 <body>
 
+<audio id="bgMusic" autoplay loop>
+<source src="John Legend - All of Me (Official Video).mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" onclick="playMusic()">Activar Música</button>
+
 <div class="intro">
-<h1>ANI & CARLOS</h1>
+<h1>Nuestra Boda<br>Ani & Carlos</h1>
+<p>9 · 07 · 2026</p>
 </div>
 
 <canvas id="particles"></canvas>
@@ -311,10 +350,10 @@ Salón Falak – El Cercado KM 5, Monteros
 <h2>Padrinos & Madrinas</h2>
 <div class="divider"></div>
 <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:40px;">
-<div class="padrino"><p>Madrina</p><strong>Griselda</strong><img src="Griselda.jpg" alt=""></div>
-<div class="padrino"><p>Madrina</p><strong>Alicia</strong><img src="Alicia.jpg" alt=""></div>
-<div class="padrino"><p>Padrino</p><strong>Eduardo</strong><img src="Eduardo.jpg" alt=""></div>
-<div class="padrino"><p>Padrino</p><strong>Guillermo</strong><img src="Grillermo.jpg" alt=""></div>
+<div class="padrino"><p>Madrina</p><strong>Griselda</strong><img src="Griselda.jpg"></div>
+<div class="padrino"><p>Madrina</p><strong>Alicia</strong><img src="Alicia.jpg"></div>
+<div class="padrino"><p>Padrino</p><strong>Eduardo</strong><img src="Eduardo.jpg"></div>
+<div class="padrino"><p>Padrino</p><strong>Guillermo</strong><img src="Grillermo.jpg"></div>
 </div>
 </div>
 </section>
@@ -350,29 +389,19 @@ Titular: Carlos XXXXX
 </div>
 </section>
 
-  <!-- COMPARTIR FOTOS -->
+<!-- COMPARTIR FOTOS -->
 <section class="section">
 <div class="card">
 <h2>Compartí tus Fotos</h2>
 <div class="divider"></div>
-
 <p>Escaneá el código QR y subí tus fotos del gran día 📸✨</p>
-
 <div class="qr-box">
-<img src="QR.png" alt="QR para compartir fotos">
+<img src="QR.png">
 </div>
-
-<p style="margin-top:10px;">
-También podés ingresar desde este enlace:
-</p>
-
-<a class="button" href="https://drive.google.com/drive/folders/1P28sSv6ddx38R_82rW2NjxN1pH6Acs38?usp=drive_link" target="_blank">
-Subir Fotos
-</a>
-
+<p style="margin-top:10px;">También podés ingresar desde este enlace:</p>
+<a class="button" href="https://drive.google.com/drive/folders/1P28sSv6ddx38R_82rW2NjxN1pH6Acs38?usp=drive_link" target="_blank">Subir Fotos</a>
 </div>
 </section>
-
 
 <!-- CONFIRMAR -->
 <section class="section">
@@ -390,7 +419,8 @@ CON AMOR, LOS ESPERAMOS
 </footer>
 
 <script>
-// Scroll animación
+function playMusic(){document.getElementById("bgMusic").play();}
+
 const cards=document.querySelectorAll('.card');
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
@@ -399,41 +429,28 @@ if(entry.isIntersecting){entry.target.classList.add('visible');}
 },{threshold:0.3});
 cards.forEach(card=>observer.observe(card));
 
-// CONTADOR
 const weddingDate = new Date("July 9, 2026 12:00:00").getTime();
-const interval = setInterval(function(){
+setInterval(function(){
 const now = new Date().getTime();
 const distance = weddingDate - now;
-
 if(distance <= 0){
-clearInterval(interval);
 document.querySelector('.countdown').innerHTML="<h3>¡Llegó el gran día! 🤍</h3>";
 return;
 }
-
-document.getElementById("days").innerHTML = Math.floor(distance / (1000*60*60*24));
-document.getElementById("hours").innerHTML = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-document.getElementById("minutes").innerHTML = Math.floor((distance%(1000*60*60))/(1000*60));
-document.getElementById("seconds").innerHTML = Math.floor((distance%(1000*60))/1000);
+days.innerHTML=Math.floor(distance/(1000*60*60*24));
+hours.innerHTML=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+minutes.innerHTML=Math.floor((distance%(1000*60*60))/(1000*60));
+seconds.innerHTML=Math.floor((distance%(1000*60))/1000);
 },1000);
 
-// DESTELLOS DORADOS
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particlesArray = [];
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particlesArray=[];
 for(let i=0;i<80;i++){
-particlesArray.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*2+1,
-speedY:Math.random()*0.5+0.2,
-opacity:Math.random()
-});
+particlesArray.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*2+1,speedY:Math.random()*0.5+0.2,opacity:Math.random()});
 }
-
 function animateParticles(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 particlesArray.forEach(p=>{
@@ -447,11 +464,7 @@ if(p.y<0){p.y=canvas.height;p.x=Math.random()*canvas.width;}
 requestAnimationFrame(animateParticles);
 }
 animateParticles();
-
-window.addEventListener("resize",()=>{
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-});
+window.addEventListener("resize",()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 </script>
 
 </body>
