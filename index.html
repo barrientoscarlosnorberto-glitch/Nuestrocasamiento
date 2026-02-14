@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuesta Boda</title>
+<title>Nuestra Boda</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
@@ -17,7 +17,7 @@ color:#f5f3ee;
 overflow-x:hidden;
 }
 
-/* ===== INTRO ===== */
+/* INTRO */
 .intro{
 position:fixed;
 width:100%;
@@ -47,7 +47,7 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* ===== PARTICULAS ===== */
+/* PARTICULAS */
 canvas{
 position:fixed;
 top:0;
@@ -55,7 +55,7 @@ left:0;
 z-index:0;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
 position:relative;
 min-height:100vh;
@@ -112,7 +112,45 @@ letter-spacing:4px;
 color:#e6c27a;
 }
 
-/* ===== SECCIONES ===== */
+/* CONTADOR */
+.countdown{
+display:flex;
+justify-content:center;
+gap:25px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.time-box{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(230,194,122,0.3);
+border-radius:20px;
+padding:20px 25px;
+min-width:90px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 20px rgba(230,194,122,0.2);
+transition:0.4s;
+}
+
+.time-box:hover{
+transform:translateY(-5px);
+box-shadow:0 0 30px rgba(230,194,122,0.6);
+}
+
+.time{
+font-family:'Playfair Display', serif;
+font-size:2rem;
+color:#e6c27a;
+}
+
+.label{
+font-size:0.8rem;
+letter-spacing:2px;
+margin-top:5px;
+opacity:0.8;
+}
+
+/* SECCIONES */
 .section{
 padding:100px 20px;
 display:flex;
@@ -170,7 +208,9 @@ color:#1a1410;
 box-shadow:0 0 20px rgba(230,194,122,0.6);
 }
 
+/* PADRINOS */
 .padrino{
+text-align:center;
 margin-bottom:40px;
 }
 
@@ -187,10 +227,6 @@ transition:0.4s;
 .padrino img:hover{
 transform:scale(1.08);
 box-shadow:0 0 35px rgba(230,194,122,0.8);
-}
-
-.padrino{
-text-align:center;
 }
 
 .regalos-box{
@@ -229,7 +265,6 @@ color:#b8b8b8;
 letter-spacing:4px;
 }
 
-/* ===== RESPONSIVE ===== */
 @media(max-width:600px){
 .names{font-size:2rem;}
 .photo{width:220px;height:300px;}
@@ -240,93 +275,73 @@ letter-spacing:4px;
 <body>
 
 <div class="intro">
-  <div class="intro-text">
-    <span class="subtitle">NUESTRA BODA</span>
-    <h1 class="main-title">ANI & CARLOS</h1>
-  </div>
+<h1>ANI & CARLOS</h1>
 </div>
 
 <canvas id="particles"></canvas>
 
 <section class="hero">
 <div class="photo">
-<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" alt="">
+<img src="WhatsApp Image 2026-02-12 at 10.46.36.jpeg" alt="Ani y Carlos">
 </div>
 <div class="names">Ani & Carlos</div>
 <div class="date">9 · 07 · 2026</div>
 </section>
 
+<!-- CONTADOR -->
+<section class="section">
+<div class="card">
+<h2>Faltan</h2>
+<div class="divider"></div>
+<div class="countdown">
+<div class="time-box"><div class="time" id="days">00</div><div class="label">DÍAS</div></div>
+<div class="time-box"><div class="time" id="hours">00</div><div class="label">HORAS</div></div>
+<div class="time-box"><div class="time" id="minutes">00</div><div class="label">MINUTOS</div></div>
+<div class="time-box"><div class="time" id="seconds">00</div><div class="label">SEGUNDOS</div></div>
+</div>
+</div>
+</section>
+
+<!-- DETALLES -->
 <section class="section">
 <div class="card">
 <h2>Detalles</h2>
 <div class="divider"></div>
-
 <p><strong>Ceremonia:</strong> 12:00 hs</p>
 <p><strong>Recepción:</strong> 12:30 hs</p>
-
 <p style="margin-top:20px;">
 Parroquia Nuestra Señora del Rosario<br>
 Monteros, Tucumán
 </p>
-
 <a class="button" href="https://maps.app.goo.gl/Kt3pUQE3AhJ3sqKz6" target="_blank">Ver Ubicación</a>
-
 <p style="margin-top:30px;">
 Salón Falak – El Cercado KM 5, Monteros
 </p>
-
 <a class="button" href="https://maps.app.goo.gl/CPNkUQKarg4dU7NZA" target="_blank">Ver Ubicación</a>
 </div>
 </section>
 
-<section class="section">
-<div class="card">
-<h2>Padrinos</h2>
-<div class="divider"></div>
-
+<!-- PADRINOS -->
 <section class="section">
 <div class="card">
 <h2>Padrinos & Madrinas</h2>
 <div class="divider"></div>
-
-<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:40px;">
-
-<div class="padrino">
-<p>Madrina</p>
-<strong>Griselda</strong>
-<img src="Griselda.jpg.jpg">
-</div>
-
-<div class="padrino">
-<p>Madrina</p>
-<strong>Alicia</strong>
-<img src="FOTO_MADRINA2.jpg">
-</div>
-
-<div class="padrino">
-<p>Padrino</p>
-<strong>Eduardo</strong>
-<img src="FOTO_PADRINO1.jpg">
-</div>
-
-<div class="padrino">
-<p>Padrino</p>
-<strong>Guillermo</strong>
-<img src="Grillermo.jpg">
-</div>
-
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:40px;">
+<div class="padrino"><p>Madrina</p><strong>Griselda</strong><img src="Griselda.jpg" alt=""></div>
+<div class="padrino"><p>Madrina</p><strong>Alicia</strong><img src="Alicia.jpg" alt=""></div>
+<div class="padrino"><p>Padrino</p><strong>Eduardo</strong><img src="Eduardo.jpg" alt=""></div>
+<div class="padrino"><p>Padrino</p><strong>Guillermo</strong><img src="Grillermo.jpg" alt=""></div>
 </div>
 </div>
 </section>
 
+<!-- REGALOS -->
 <section class="section">
 <div class="card">
 <h2>Regalos</h2>
 <div class="divider"></div>
-
-<p>El mejor regalo es que nos acompañen. 🤍</p>
+<p>El mejor regalo es que nos acompañen 🤍</p>
 <p>Si querés hacernos un obsequio, podés contribuir a nuestra luna de miel.</p>
-
 <div class="regalos-box">
 Banco: ———<br>
 Alias: ani.carlos.boda<br>
@@ -336,65 +351,22 @@ Titular: Carlos XXXXX
 </div>
 </section>
 
-  <section class="section">
+<!-- VESTIMENTA -->
+<section class="section">
 <div class="card">
 <h2>Código de Vestimenta</h2>
 <div class="divider"></div>
-
-<p>La ceremonia y recepción serán de estilo</p>
-<h3 style="margin-top:10px; letter-spacing:3px; color:#e6c27a;">ELEGANTE / FORMAL</h3>
-
-<p style="margin-top:25px;">
-Colores reservados para novios y damas de honor:
-</p>
-
-<div style="display:flex; justify-content:center; gap:25px; margin-top:30px;">
-
-<div style="text-align:center;">
-<div style="width:50px; height:50px; border-radius:50%; background:white; margin:auto; box-shadow:0 0 15px rgba(255,255,255,0.6);"></div>
-<p style="margin-top:10px;">Blanco</p>
+<p>Estilo elegante / formal</p>
+<p style="margin-top:20px;">Colores reservados:</p>
+<div style="display:flex;justify-content:center;gap:25px;margin-top:20px;">
+<div><div style="width:50px;height:50px;border-radius:50%;background:white;margin:auto;"></div><p>Blanco</p></div>
+<div><div style="width:50px;height:50px;border-radius:50%;background:#6e1f2b;margin:auto;"></div><p>Bordó</p></div>
+<div><div style="width:50px;height:50px;border-radius:50%;background:#7a7a7a;margin:auto;"></div><p>Gris</p></div>
 </div>
-
-<div style="text-align:center;">
-<div style="width:50px; height:50px; border-radius:50%; background:#6e1f2b; margin:auto; box-shadow:0 0 15px rgba(110,31,43,0.6);"></div>
-<p style="margin-top:10px;">Bordó</p>
-</div>
-
-<div style="text-align:center;">
-<div style="width:50px; height:50px; border-radius:50%; background:#7a7a7a; margin:auto; box-shadow:0 0 15px rgba(122,122,122,0.6);"></div>
-<p style="margin-top:10px;">Gris</p>
-</div>
-
-</div>
-
-<p style="margin-top:30px; font-size:0.9rem; opacity:0.8;">
-Les pedimos evitar estos colores para mantener la armonía estética del evento.
-</p>
-
 </div>
 </section>
 
-<section class="section">
-<div class="card">
-<h2>Compartí tus Fotos</h2>
-<div class="divider"></div>
-
-<p>
-Queremos revivir cada momento de nuestra boda.<br>
-Subí tus fotos y videos escaneando el código QR o tocando el botón.
-</p>
-
-<div class="qr-box">
-<img src="QR.png" alt="QR Subir Fotos">
-</div>
-
-<a class="button" href="https://drive.google.com/drive/folders/1P28sSv6ddx38R_82rW2NjxN1pH6Acs38?usp=drive_link" target="_blank">
-Subir Fotos
-</a>
-
-</div>
-</section>
-
+<!-- CONFIRMAR -->
 <section class="section">
 <div class="card">
 <h2>Confirmar Asistencia</h2>
@@ -404,75 +376,12 @@ Subir Fotos
 </section>
 
 <footer>
-ANI & CARLOS
-  
-9 - 7 - 26
-  
+ANI & CARLOS<br>
+9 · 07 · 2026<br>
 CON AMOR, LOS ESPERAMOS
-  
 </footer>
 
-<audio id="music" autoplay loop>
-<source src="John Legend - All of Me (Official Video).mp3" type="audio/mp3">
-</audio>
-
 <script>
-// Fade música
-const music = document.getElementById("music");
-music.volume = 0;
-
-function fadeInAudio(){
-let vol=0;
-let interval=setInterval(()=>{
-if(vol<0.6){vol+=0.02;music.volume=vol;}
-else{clearInterval(interval);}
-},200);
-}
-
-window.addEventListener("load",()=>{setTimeout(fadeInAudio,3000);});
-document.body.addEventListener("click",()=>{music.play();fadeInAudio();},{once:true});
-
-// Partículas
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-
-class Particle{
-constructor(){
-this.x=Math.random()*canvas.width;
-this.y=Math.random()*canvas.height;
-this.size=Math.random()*2+1;
-this.speedY=Math.random()*0.5+0.2;
-}
-update(){
-this.y-=this.speedY;
-if(this.y<0){this.y=canvas.height;this.x=Math.random()*canvas.width;}
-}
-draw(){
-ctx.fillStyle="rgba(230,194,122,0.7)";
-ctx.beginPath();
-ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-ctx.fill();
-}
-}
-
-for(let i=0;i<120;i++){particles.push(new Particle());}
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p=>{p.update();p.draw();});
-requestAnimationFrame(animate);
-}
-animate();
-
-window.addEventListener("resize",()=>{
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-});
-
 // Scroll animación
 const cards=document.querySelectorAll('.card');
 const observer=new IntersectionObserver(entries=>{
@@ -480,14 +389,19 @@ entries.forEach(entry=>{
 if(entry.isIntersecting){entry.target.classList.add('visible');}
 });
 },{threshold:0.3});
-
 cards.forEach(card=>observer.observe(card));
+
+// CONTADOR
+const weddingDate = new Date("July 9, 2026 12:00:00").getTime();
+setInterval(function(){
+const now = new Date().getTime();
+const distance = weddingDate - now;
+document.getElementById("days").innerHTML = Math.floor(distance / (1000*60*60*24));
+document.getElementById("hours").innerHTML = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+document.getElementById("minutes").innerHTML = Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById("seconds").innerHTML = Math.floor((distance%(1000*60))/1000);
+},1000);
 </script>
 
 </body>
 </html>
-
-
-
-
-
